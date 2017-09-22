@@ -21,5 +21,8 @@ class ViewController: UIViewController {
     }
 
 
+    @IBAction func takePhotos(_ sender: Any) {
+        
+    }
 }
 
