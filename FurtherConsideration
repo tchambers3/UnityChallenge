@@ -1,0 +1,8 @@
+I was not able to get the keychain working. I was using a KeychainWrapper from (https://github.com/macostea/KeychainItemWrapper.swift) to store the images.
+
+If I had more time...
+1.) I would have finished the image storing
+2.) Added more error handling for the camera
+3.) Added the sets of images taken on the first page to be viewed whenever
+4.) Shown the images as they were taken
+5.) Shown all images after all 10 were taken
