@@ -21,10 +21,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dPm-n5-Syc">
-                                <rect key="frame" x="164" y="318" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dPm-n5-Syc">
+                                <rect key="frame" x="144.5" y="318" width="85" height="30"/>
+                                <state key="normal" title="Take Photos"/>
                                 <connections>
                                     <action selector="takePhotos:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RMy-Zi-zky"/>
                                     <segue destination="zbe-Tc-sa2" kind="show" id="gRx-OO-Azp"/>
@@ -32,6 +31,10 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="dPm-n5-Syc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="MLu-3a-1Eq"/>
+                            <constraint firstItem="dPm-n5-Syc" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="s75-5g-CR6"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -56,7 +59,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pyy-l3-ptF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1060" y="38"/>
+            <point key="canvasLocation" x="1060" y="37.331334332833585"/>
         </scene>
     </scenes>
 </document>

@@ -8,6 +8,12 @@
 
 import UIKit
 import AVFoundation
+import CoreData
+
+struct KeychainConfiguration {
+    static let serviceName = "UnityImages"
+    static let accessGroup: String? = nil
+}
 
 class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
 
@@ -17,6 +23,8 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     @IBOutlet weak var previewView: UIView!
     var imagesTaken:Int = 0
     var timer:Timer? = nil
+    var passwordItems: [KeychainPasswordItem] = []
+    var images: [Data] = []
 
     
     override func viewDidLoad() {
@@ -87,6 +95,14 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
             settings.previewPhotoFormat = previewFormat
             cameraOutput.capturePhoto(with: settings, delegate: self)
         }
+        if(imagesTaken == 10) {
+            let alert = UIAlertController(title: "Finsihed", message: "10 Images were taken", preferredStyle: UIAlertControllerStyle.alert)
+
+            alert.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.default, handler: nil))
+            
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler:nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 
     
@@ -105,12 +121,23 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
             let cgImageRef: CGImage! = CGImage(jpegDataProviderSource: dataProvider!, decode: nil, shouldInterpolate: true, intent: .defaultIntent)
             let image = UIImage(cgImage: cgImageRef, scale: 1.0, orientation: UIImageOrientation.right)
             imagesTaken = imagesTaken + 1
-            print("====Image Taken=======")
-            
+            let imageData = UIImageJPEGRepresentation(image, 0.0)
+            images.append(imageData!)
+            self.save(imageData: imageData! as NSData)
             
         } else {
             print("some error here")
         }
+    }
+    
+    func save(imageData: NSData) {
+        
+        let imgEncoded = imageData.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
+        let data = NSKeyedArchiver.archivedData(withRootObject: imgEncoded)
+        /// Save Image to keychain here
+//        let keychainItem = KeychainItemWrapper(identifier: "com.UnityChallenge", accessGroup: nil)
+//        keychainItem["secretKey"] = data as AnyObject
+
     }
 
 
